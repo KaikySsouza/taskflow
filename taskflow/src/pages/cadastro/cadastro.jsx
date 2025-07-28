@@ -19,6 +19,7 @@ function Cadastro() {
                 <a className="text-[15px]" href="#">Já possui uma conta?</a>
                 </div> 
             </div>
+            
         </div>
     )
 }   
