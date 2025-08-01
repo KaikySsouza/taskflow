@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+
+@font-face {
+    font-family: "WinkRough-bold";
+    src: url(./fonts/WinkyRough-Bold.ttf) format("opentype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-WinkyRough: Winky, "sans-serif";
+}

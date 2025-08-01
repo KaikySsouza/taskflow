@@ -1,6 +1,9 @@
+
+
+
 function Cadastro() {
     return(
-        <div className="flex justify-center text-center items-center h-screen  bg-[#aaafb1] ">
+        <div className="flex justify-center text-center items-center h-screen  bg-[#aaafb1] font-WinkyRough ">
             <div className="bg-[#599DC7] w-[83.4vh] h-[83.4vh] ">
                 <img className="absolute top-0" width={290} src="/TaskFlowlogo.png" alt="task.png" />
                 <h1 className="  text-[30px] relative top-[40%] ">Comece sua jornada</h1>
