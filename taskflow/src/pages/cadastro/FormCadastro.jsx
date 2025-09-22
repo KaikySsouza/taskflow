@@ -36,7 +36,7 @@ const [pass, setPass]  = useState("")
          type="text"
          placeholder="Nome:"
          onChange={(e) => setName(e.target.value)}
-         className="border-1 rounded-2xl m-2 p-1"
+         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
          />
         
 
@@ -44,7 +44,7 @@ const [pass, setPass]  = useState("")
          type="email"
          placeholder="Email:"
          onChange={(e) => setEmail(e.target.value)}
-         className="border-1 rounded-2xl m-2 p-1"
+         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
          />
 
 
@@ -52,11 +52,11 @@ const [pass, setPass]  = useState("")
          type="password"
          placeholder="Senha:"
          onChange={(e) => setPass(e.target.value)}
-         className="border-1 rounded-2xl m-2 p-1"
+         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
           />
 
         <div>
-         <button type="submit" className="border-1 w-[150px] rounded-2xl m-3 text-[18px] cursor-pointer ">Cadastra-se</button>
+         <button type="submit" className=" border-black w-[20vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl cursor-pointer ">Cadastra-se</button>
         </div>
 
         <Link>Já possui uma conta?</Link>
