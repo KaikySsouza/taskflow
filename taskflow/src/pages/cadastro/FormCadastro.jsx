@@ -43,18 +43,21 @@ const [pass, setPass]  = useState("")
 
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen ">
-      <h1 className="text-[25px] m-5"> Cadastro</h1>
+    <div className="flex flex-col  items-center justify-center h-screen">
 
-      <form onSubmit={handlesubmit} className="flex flex-col w-[300px] mb-22" 
+      <h1 className="text-[5vh] m-5 "> Cadastro</h1>
+
       
-      >
+
+      <form onSubmit={handlesubmit}
+       className="flex  flex-col justify-center items-center p-2">
+
         <input
          type="text"
          placeholder="Nome:"
          value={name}
          onChange={(e) => setName(e.target.value)}
-         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
+         className=" border-black w-[48vh] bg-[rgba(101,125,134,0.73)] p-[10px] m-2.5 rounded-2xl"
          />
         
 
@@ -63,7 +66,7 @@ const [pass, setPass]  = useState("")
          placeholder="Email:"
          value={email}
          onChange={(e) => setEmail(e.target.value)}
-         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
+         className=" border-black w-[48vh] bg-[rgba(101,125,134,0.73)] p-[10px] m-2.5 rounded-2xl"
          />
 
 
@@ -72,15 +75,18 @@ const [pass, setPass]  = useState("")
          placeholder="Senha:"
          value={pass}
          onChange={(e) => setPass(e.target.value)}
-         className=" border-black w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl"
-          />
-
+         className=" border-black w-[48vh] bg-[rgba(101,125,134,0.73)] p-[10px] m-2.5 rounded-2xl"
+         />
+         
         <div>
-         <button type="submit" className=" border-black w-[20vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl cursor-pointer ">Cadastra-se</button>
+         <button type="submit" className=" border-black text-[18px] w-[35vh] bg-[rgba(101,125,134,0.27)] p-[10px] m-2.5 rounded-2xl cursor-pointer ">Cadastra-se</button>
         </div>
 
-        <Link>Já possui uma conta?</Link>
+
+        <Link to={"/login"}>Já possui uma conta?</Link>
       </form>
+  
+    
     </div>
   );
 }
