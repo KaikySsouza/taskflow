@@ -17,3 +17,7 @@
     --font-WinkyRough: Winky, "sans-serif";
     --font-Roboto: Roboto, "sans-serif"
 }
+
+*{
+    overflow: hidden;
+}

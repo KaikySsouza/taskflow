@@ -1,20 +1,9 @@
-import { Menu, FileCheckCorner, HandCoins, LayoutDashboard, Bell, UserRoundPen} from 'lucide-react';
-import { useState } from 'react';
-function Navbar() {
-  const [menu, setMenu] = useState('')
+import {FileCheckCorner, HandCoins, LayoutDashboard, Bell, UserRoundPen} from 'lucide-react';
 
-  function ViewMenu() {
-    return setMenu( 
-      <>
-       <ul>
-      <li>DashBoard</li>
-      <li>Tarefas</li>
-      <li>Gastos</li>
-    </ul> </>)}
-
+  export default function Navbar() {
   return (
     <>
-    <header className='  bg-[#599dc7] p-4'>
+    <header className='  bg-[#599dc7] shadow-xl/15 p-4'>
         <p className='absolute text-[18px] font-bold '>TaskFlow</p>
      
 
@@ -25,19 +14,19 @@ function Navbar() {
      
     </header>
    
-     <body>
-      
     
-      <nav className='flex flex-col bg-[#599dc7d7] h-[100vh] w-[60px]'> 
+      <nav className='flex flex-col bg-[#599dc7d7] h-[100vh] w-[60px] absolute'> 
         <ul className=''>
-          <li className='m-[2vh] mt-[7vh]'><Menu/></li>
-          <li className='m-[2vh] mt-[10vh]'><LayoutDashboard/></li>
-          <li className='m-[2vh] mt-[10vh]'><FileCheckCorner /></li>
-          <li className='m-[2vh] mt-[10vh]'><HandCoins/></li>
+          <li className='m-[2vh] mt-[10vh] cursor-pointer' ><LayoutDashboard/></li>
+          <li className='m-[2vh] mt-[10vh] cursor-pointer'><FileCheckCorner /></li>
+          <li className='m-[2vh] mt-[10vh] cursor-pointer'><HandCoins/></li>
         </ul>
       </nav>
 
-       </body>
+      
+
+
+ 
   
 
     </>
@@ -46,4 +35,4 @@ function Navbar() {
   )
 }
 
-export default Navbar;
+
