@@ -12,6 +12,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>} />      
         <Route path="/home" element={<Home/>}/>
         <Route path="/tarefas" element={<Tasks/>}/>
+ 
       </Routes>
     </Router>
   )
