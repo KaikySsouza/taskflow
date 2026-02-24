@@ -38,29 +38,40 @@ export default function Tasks() {
 
   console.log(tasks);
 
+
+
+
   const salvar = tasks.map((task) => {
     return (
-      <ul className="">
-        <li className="bg-cyan-100 m-2 p-2 w-100 text-start rounded-2xl ">{task.title} 
-        <button className=" items-end"><Trash/></button>
-        </li>
+     
+      <ul className="flex ">
+        <li className="bg-cyan-100 m-2 p-2 w-100 text-start rounded-2xl cursor-pointer ">{task.title}</li>
+       <button className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">Editar</button>
+       <button className="cursor-pointer p-2"><Trash className=""/></button>
       </ul>
+   
+
     );
   }); // Possivel adicionar isso dentro do reder.
+
+
 
   return (
     <div className=" bg-gray-300 h-screen">
       <Navbar />
 
-      <header className="flex text-center gap-3 justify-center cursor-pointer">
-        <h1 className="text-[30px] my-5">Criar tarefa</h1>
+      <header className="flex text-center gap-3 justify-center cursor-pointer my-5">
+        <h1 className="text-[30px] ">Criar tarefa</h1>
         <button className="">
-          <FilePlusCorner />
+          <FilePlusCorner/>
         </button>
       </header>
 
-        <h2 className="text-[25px] text-center">Tarefas</h2>
-      <div className="flex flex-col m-auto items-center ">
+      <div className="flex flex-col m-auto  bg-[#fff] w-[80vh] rounded-2xl ">
+        <div className="flex justify-around gap-[55vh] my-2">
+        <h2 className="text-[25px]">Tarefas</h2>
+        <p className="mt-3 hover:underline">Ver mais</p>
+        </div>
         {salvar}
         <NewTasks />
       </div>
