@@ -1,4 +1,5 @@
 import {FileCheckCorner, HandCoins, LayoutDashboard, Bell, UserRoundPen} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
   export default function Navbar() {
   return (
@@ -18,8 +19,8 @@ import {FileCheckCorner, HandCoins, LayoutDashboard, Bell, UserRoundPen} from 'l
       <nav className='flex flex-col bg-[#599dc7d7] h-[100vh] w-[60px] absolute'> 
         <ul className=''>
           <li className='m-[2vh] mt-[10vh] cursor-pointer' ><LayoutDashboard/></li>
-          <li className='m-[2vh] mt-[10vh] cursor-pointer'><FileCheckCorner /></li>
-          <li className='m-[2vh] mt-[10vh] cursor-pointer'><HandCoins/></li>
+          <li className='m-[2vh] mt-[10vh] cursor-pointer'><Link to={"/tarefas"}><FileCheckCorner /></Link></li>
+          <li className='m-[2vh] mt-[10vh] cursor-pointer'><Link to={"/planejamento"} ><HandCoins/></Link></li>
         </ul>
       </nav>
 
