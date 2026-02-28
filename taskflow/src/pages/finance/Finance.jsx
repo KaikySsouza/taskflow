@@ -17,7 +17,7 @@ export default function Finance() {
     {
       id: 2, 
       description: "Supermercado",
-      valor: "120,50",
+      value: "120,50",
       data: "12/12/2025 18:30",
       payment: "cartão de crédito",
       type: "alimentação",
@@ -25,7 +25,7 @@ export default function Finance() {
     {
       id: 3,
       description: "Internet",
-      valor: "89,90",
+      value: "89,90",
       data: "15/12/2025 09:00",
       payment: "débito automático",
       type: "fixo",
@@ -42,7 +42,7 @@ export default function Finance() {
 
   console.log(expenses);
 
-
+ // RESPONSAVEL POR RETORNA OS GASTOS.
 
   const save = expenses.map((exp) => {
     return (
@@ -56,6 +56,7 @@ export default function Finance() {
   });
   
 
+  // MODAL
 
   function ViewModal() {
     setView(  
@@ -80,6 +81,20 @@ export default function Finance() {
   )}
   
 
+  // CRIAR GASTOS
+
+  function NewExpense(description, value, data, type,  payment) {
+    console.log("chamou!", description, value, data, type, payment) // adiciona isso
+   const news = {
+    id: expenses.id + 1,
+    description,
+    value,
+    data,
+    type,
+    payment,   
+    }
+    setExpenses([...expenses, news])
+  }
 
 
   return (
@@ -89,7 +104,7 @@ export default function Finance() {
         
       {view}
 
-        <NewExpenses />
+        <NewExpenses  newexpenses={NewExpense} />
         <div className="bg-[#338f8420] my-10 rounded-2xl w-[142vh] justify-center m-auto">
        
           
