@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { FilePlusCorner, Trash } from "lucide-react";
+import { FilePlusCorner, Trash, View } from "lucide-react";
 import NewTasks from "./NewTasks";
 import { useState } from "react";
 
@@ -37,7 +37,7 @@ export default function Tasks() {
   ]);
 
   const [modal, setModal] = useState(false)
-  const [view, setTask] = useState(false)
+  const [view, setView] = useState(false)
   
 
   console.log(tasks);
@@ -47,13 +47,16 @@ export default function Tasks() {
  function ViewClick(taskId) {
   const newtask = tasks.map((task) => {
     if(task.id === taskId) {
-      return {...task, finish: !task.finish}
+      return {...task, finish: !task.finish} 
     }else{
       return task
     }
   })
   setTasks(newtask)
+  console.log(newtask)
  }
+
+ 
 
 // Nova task
 
@@ -72,7 +75,7 @@ export default function Tasks() {
  // Excluir task
 
  function DeleteTask(taskId) {
-   const del  =  tasks.filter(task => task.id !== taskId)
+   const del  =  tasks.filter(task => task.id != taskId)
     setTasks(del)
   }
 
