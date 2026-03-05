@@ -2,9 +2,9 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import NewExpenses from "./NewExpenses";
+import ViewModal from "./ViewModal";
 
 export default function Finance() {
-  const [view, setView] = useState('')
   const [expenses, setExpenses] = useState([
     {
       id: 1,
@@ -39,6 +39,8 @@ export default function Finance() {
       type: "saúde",
     },
   ]);
+  
+  const [modal, setModal] = useState(false)
 
   console.log(expenses);
 
@@ -56,29 +58,7 @@ export default function Finance() {
   });
   
 
-  // MODAL
-
-  function ViewModal() {
-    setView(  
-          <div className=" absolute flex p-[10vh] h-[80%] rounded-2xl bg-[#f5fffeec] w-[142vh] my-10 ">
-         <div>
-          <div className="flex justify-between my-5">
-          <h1 className="text-[25px]">Tabela</h1>
-          <X />
-          </div>
-          <div className="grid grid-cols-4 gap-[18vh] ">
-            <p className="m-auto">Descrição</p>
-            <p>Valor(R$)</p>
-            <p>Forma de Pagamento</p>
-            <p>Categoria</p>
-          </div>
-          
-          <span>  {/* MOSTRAR ÚLTIMAS INFORMAÇÕES DE GASTOS */}
-            {save}
-          </span>
-        </div>
-      </div>
-  )}
+ 
   
 
   // CRIAR GASTOS
@@ -102,7 +82,7 @@ export default function Finance() {
       <Navbar />
       <div className=" bg-gray-300 h-screen flex flex-col  items-center " > 
         
-      {view}
+      
 
         <NewExpenses  newexpenses={NewExpense} />
         <div className="bg-[#338f8420] my-10 rounded-2xl w-[142vh] justify-center m-auto">
@@ -110,9 +90,10 @@ export default function Finance() {
           
           <span className="m-auto flex justify-between p-4">
           <h2 className="text-[25px]  ">Despesas</h2>
-          <p onClick={ViewModal}  className="cursor-pointer hover:underline ">Ver mais</p>
-          
+          <button onClick={() => setModal(true)}  className="cursor-pointer hover:underline ">Ver mais</button>
           </span>
+
+          <div className={`flex justify-center items-center ${modal ? 'opacity-1000 transition-all duration-700 ' : 'hidden'}`} ><ViewModal newexpenses={NewExpense}/></div>
        
          {/* ADICIONAR EDITAR E EXCLUIR */}
          
