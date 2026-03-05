@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-export default function NewExpenses() {
+export default function NewExpenses({newexpenses}) {
   const [description, setDescription] = useState('')  
   const [value, setValue] = useState('') 
   const [data, setData] = useState('') 
+  const [type, setType] = useState('')
   const [payment, setPayment] = useState('') 
   const [save, setSave] = useState('')
 
-  console.log(save)
+  
+  console.log(description)
 
   return (
     <>
@@ -39,8 +41,8 @@ export default function NewExpenses() {
         />
 
         <select className="bg-gray-400 w-100 p-3 rounded-2xl "
-        value={data}
-        onChange={(e) => setData(e.target.value)}
+        value={type}
+        onChange={(e) => setType(e.target.value)}
         
         >
 
@@ -63,7 +65,7 @@ export default function NewExpenses() {
           <option>Pix</option>
         </select>
 
-        <button value={save} onSubmit={(e) => setSave(e.target.value)} className="bg-gray-400 w-100 p-3 rounded-2xl hover:bg-green-500">
+        <button   onClick={() => newexpenses(description, value, data, type, payment)} value={save} onSubmit={(e) => setSave(e.target.value)} className="bg-gray-400 w-100 p-3 rounded-2xl hover:bg-green-500">
           Confirmar!
         </button>
       </span>
