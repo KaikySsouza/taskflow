@@ -60,7 +60,7 @@ export default function Tasks() {
 
 // Nova task
 
- function NewTask(title, description, term) {
+ function CreateTask(title, description, term) {
   const newtask = {
     id: tasks.length + 1,
     title, 
@@ -68,7 +68,7 @@ export default function Tasks() {
     term,
     finish: false
   }
-  setTasks(...tasks, newtask)
+    setTasks([...tasks, newtask])
 }
   
 
@@ -141,7 +141,7 @@ export default function Tasks() {
 
 
       {/* Responsavel por mostrar e esconder o modal */}    
-      <div className={`flex absolute inset-0 justify-center items-center  my-4  w-[50%] max-w-[120vh] rounded-2xl   ${modal ? 'opacity-1000 transition-all duration-1000 m-[25%] ' : 'opacity-0 pointer-events-none  transition-all duration-700' }`}> <NewTasks viewtask={ViewTask}/> </div>
+      <div className={`flex absolute inset-0 justify-center items-center  my-4  w-[50%] max-w-[120vh] rounded-2xl   ${modal ? 'opacity-1000 transition-all duration-1000 m-[25%] ' : 'opacity-0 pointer-events-none  transition-all duration-700' }`}> <NewTasks CreateTask={CreateTask} ViewTask={ViewTask}/> </div>
       
     </div>
   );
