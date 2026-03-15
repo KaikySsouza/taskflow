@@ -38,6 +38,7 @@ export default function Tasks() {
 
   const [modal, setModal] = useState(false)
   const [view, setView] = useState(false)
+  const [validaclick, setValidaclick] = useState(false)
   
 
   console.log(tasks);
@@ -70,7 +71,9 @@ export default function Tasks() {
   }
     setTasks([...tasks, newtask])
 }
-  
+
+
+
 
  // Excluir task
 
@@ -85,7 +88,7 @@ export default function Tasks() {
     return (
      
       <ul key={tasks.id} className="flex ">
-        <li onClick={() => ViewClick(task.id)} className="bg-cyan-100 m-2 p-2 w-[70vh] text-start rounded-2xl cursor-pointer ">{task.title}</li>
+        <li onClick={() => ViewClick(task.id)} className="bg-cyan-100 m-2 p-2 w-[70vh] text-start rounded-2xl cursor-pointer ">{task.finish ? <p className="line-through">{task.title}</p> : task.title}</li>
         <button className="bg-cyan-100 p-2 m-2 w-[20vh] rounded-2xl cursor-pointer">Visualizar tarefa</button>
        <button className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">Editar</button>
        <button onClick={() =>  DeleteTask(task.id)} className="cursor-pointer p-2"><Trash className=""/></button>

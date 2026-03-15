@@ -24,6 +24,7 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'setView': /* is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u. */
     },
   },
 ])
