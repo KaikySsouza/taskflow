@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
   return (
     <>
     <header className='  bg-[#599dc7] shadow-xl/15 p-4'>
-        <p className='absolute text-[18px] font-bold '>TaskFlow</p>
+        <p className='absolute text-[18px] font-bold  '>TaskFlow</p>
      
 
         <div className='flex gap-[10vh]  justify-end mr-10'>
