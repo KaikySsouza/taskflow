@@ -1,10 +1,9 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import Tasks from "./Tasks";
+
 
 export default function NewTasks({ ViewTask, CreateTask, onClose}) {
-  const [hide, setHide] = useState(false);
-  
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [term, setTerm] = useState("");

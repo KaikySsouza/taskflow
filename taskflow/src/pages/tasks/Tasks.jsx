@@ -1,11 +1,10 @@
 import Navbar from "../../components/Navbar";
-import { FilePlusCorner, Trash, View } from "lucide-react";
+import { FilePlusCorner  } from "lucide-react";
 import NewTasks from "./NewTasks";
 import { useState } from "react";
 import { useModal } from "../../hooks/useModal";
 import { Modal } from "../../components/ViewModal";
-import * as motion from "motion/react-client";
-import ViewTask from "./ViewTask";
+import TableTask from "./TableTask";
 export default function Tasks() {
   const [tasks, setTasks] = useState([
     {
@@ -39,9 +38,7 @@ export default function Tasks() {
     },
   ]);
 
-  const [view, setView] = useState(false);
-  const [validaclick, setValidaclick] = useState(false);
-  const modal = useModal();
+  const modal = useModal(false);
 
   console.log(tasks);
 
@@ -58,6 +55,8 @@ export default function Tasks() {
     setTasks(newtask);
     console.log(newtask);
   }
+
+  // Criar Tasks
 
   function CreateTask(title, description, term) {
     const newtask = {
@@ -76,40 +75,6 @@ export default function Tasks() {
     const del = tasks.filter((task) => task.id != taskId);
     setTasks(del);
   }
-
-  // Resposavel por mostrar todas as tasks
-
-  const salvar = tasks.map((task) => {
-    return (
-      <ul key={task.id} className="flex justify-center  ">
-        <li
-          onClick={() => ViewClick(task.id)}
-          className="bg-cyan-100 m-2 p-2 w-[70vh] text-start rounded-2xl cursor-pointer "
-        >
-          {task.finish ? (
-            <p className="line-through">{task.title}</p>
-          ) : (
-            task.title
-          )}
-        </li>
-        <button className="bg-cyan-100 p-2 m-2 w-[20vh] rounded-2xl cursor-pointer">
-          Visualizar tarefa
-        </button>
-        <button className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">
-          Editar
-        </button>
-        <button
-          onClick={() => DeleteTask(task.id)}
-          className="cursor-pointer p-2"
-        >
-          <Trash className="" />
-        </button>
-      </ul>
-    );
-  });
-
- 
-
 
 
   // Possivel adicionar isso dentro do reder.
@@ -144,15 +109,15 @@ export default function Tasks() {
       </header>
 
       <div 
-        className={`m-auto  bg-[#fff] w-[100%] max-w-[120vh] rounded-2xl mt-10 ${modal.isOpen ? 'opacity-0' : ''}`}
+        className={`m-auto  bg-[#fff] w-[100%] max-w-[120vh] rounded-2xl mt-10 `}
       >
         <div className="flex justify-around gap-[90vh] my-2">
           <h2 className="text-[25px]">Tarefas</h2>
           <p className="mt-3 hover:underline cursor-pointer">Ver mais</p>
         </div>
-        {salvar}
+        
+      <TableTask Tasks={tasks} ViewClick={ViewClick} DeleteTask={DeleteTask}/>
       </div>
-      
     </div>
   );
 }
