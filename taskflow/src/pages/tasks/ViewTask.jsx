@@ -5,7 +5,7 @@ import { datalist } from "motion/react-client";
 
 export default function ViewTask({  detailsClick, onClose }) {
   const details = detailsClick;
-
+console.log(onClose)
   console.log(details);
   return (
     <div className=" bg-[#fff] flex flex-col w-[100%] max-w-[120vh] p-10 rounded-2xl ">

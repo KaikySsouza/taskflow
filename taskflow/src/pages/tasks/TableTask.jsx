@@ -1,16 +1,18 @@
 import { Trash } from "lucide-react";
 import { Modal } from "../../components/ViewModal";
 import { useModal } from "../../hooks/useModal";
-import { useState } from "react";
+import { use, useState } from "react";
 import ViewTask from "./ViewTask";
+import EditTask from "./EditTask";
 
 
 export default function TableTask({Tasks, ViewClick, DeleteTask}) {
 
     const [detailsClick, setDetailsClick] = useState('')
+    const [modalAberto, setModalAberto] = useState(null)
     const modal = useModal()
     const tasks = Tasks
-
+ 
 
     function handleClick(taskId) {
       const handle = tasks.find(task => task.id === taskId )
@@ -18,6 +20,18 @@ export default function TableTask({Tasks, ViewClick, DeleteTask}) {
     }
     console.log(detailsClick)
 
+
+    
+function botao(qual) {
+    if(qual === 'botao1'){
+        setModalAberto('botao1')
+    } else if(qual === 'botao2'){
+        setModalAberto('botao2')
+    }
+}
+   
+
+  
 
     const savetask = tasks.map((task) => {
     return (
@@ -30,12 +44,12 @@ export default function TableTask({Tasks, ViewClick, DeleteTask}) {
         <p className="line-through">{task.title}</p>) : ( task.title)}
         </li>
 
-        <button  onClick={() => { modal.open(), handleClick(task.id)}}   className="bg-cyan-100 p-2 m-2 w-[20vh] rounded-2xl cursor-pointer">
+        <button onClick={() => {botao('botao1');  handleClick(task.id)}}   className="bg-cyan-100 p-2 m-2 w-[20vh] rounded-2xl cursor-pointer">
           Visualizar tarefa
         </button>
 
 
-        <button className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">
+        <button onClick={() => botao('botao2')} className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">
           Editar
         </button>
         <button onClick={() => DeleteTask(task.id)} className="cursor-pointer p-2"> <Trash className="" /> </button>
@@ -49,14 +63,24 @@ export default function TableTask({Tasks, ViewClick, DeleteTask}) {
     <>
     {savetask}
  
-    {modal.isOpen && (
+    {modalAberto === 'botao1'  && (
         <Modal>
             <div className="absolute inset-0 flex items-center justify-center">
               
-                <ViewTask ViewClick={ViewClick} Tasks={Tasks} onClose={modal.close} detailsClick={detailsClick}/>
+                <ViewTask ViewClick={ViewClick} Tasks={Tasks} onClose={() => setModalAberto(null)} detailsClick={detailsClick}/>
             </div>
         </Modal>
     )}
+
+       {modalAberto === 'botao2'  && (
+        <Modal>
+            <div className="absolute inset-0 flex items-center justify-center">
+                <EditTask onClose={() => setModalAberto(null)}  Tasks={Tasks}/>
+            </div>
+        </Modal>
+    )}
+
+
 
     </>
   )
