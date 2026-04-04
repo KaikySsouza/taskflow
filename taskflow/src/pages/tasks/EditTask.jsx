@@ -1,35 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-export default function EditTask({ Tasks, onClose }) {
-  const tasks = Tasks;
+import { desc } from "motion/react-client";
+export default function EditTask({ Tasks, onClose, editTask}) {
+  const [titulo, setTitulo] = useState('')
+  const [description, setDescription] = useState('')
+  const [term, setTerm] = useState('')
 
-  const SelectTask = tasks.map((task) => {
-    return <option className="">{task.title}</option>;
-  });
+  
+  function Edit(titulo, description, term) {
+    
+    editTask.title = titulo
+    editTask.description = description
+    editTask.term = term
+    
+  }
+
+  
+
+  
+
+
 
   return (
     <div className=" bg-[#fff] p-[10vh] w-[100%] max-w-[120vh] rounded-2xl  ">
         
         <div className="flex justify-around gap-[35vh]">
-      <h1 className="flex justify-center text-[24px] ml-[40vh] mb-10">Editar Tarefa</h1>
+      <h1 className="flex justify-center text-[28px] ml-[40vh] mb-10">Editar Tarefa</h1>
       <X onClick={() => onClose()}/> 
     </div>
-      <div className="flex justify-around gap-[10vh] ">
-        <select className="bg-cyan-100 p-2 rounded-2xl border border-gray-300  cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option>Escolha uma tarefa</option>
-          <hr />
-          {SelectTask}
-        </select>
-
-    </div>
-
-        <div className="flex   p-2  ">
-          <input className="bg-cyan-100 w-[30vh] m-5 gap-10 rounded-2xl"  placeholder="Título da tarefa" />
-          <textarea className="bg-cyan-100  w-[30vh] m-5 gap-10 rounded-2xl" placeholder="Descrição"></textarea>
-          <input className="bg-cyan-100 w-[30vh] m-5 gap-10 rounded-2xl" type="date" />
+        <div className="flex text-[24px] justify-center">
+        {`${editTask.id}- ${editTask.title}`}
         </div>
-      
-    
+        <div className="flex flex-col m-auto justify-center items-center ">
+          <input className="bg-cyan-100 w-[30vh] m-5 p-2 gap-10 rounded-2xl"  placeholder="Título da tarefa:" value={titulo}  onChange={(e) => setTitulo(e.target.value)}/>
+          <input className="bg-cyan-100 l w-[30vh] m-5 p-2 gap-10 rounded-2xl" type="date" value={term} onChange={(e) => setTerm(e.target.value)}  />
+          <textarea className="bg-cyan-100   w-[30vh] m-5 p-2  gap-10 rounded-2xl " placeholder="Descrição:" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+          <button className="bg-cyan-100 w-[30vh] p-2 m-5 rounded-2xl hover:bg-green-500 cursor-pointer " onClick={() => {Edit(titulo, description, term);  onClose()}} >Confirmar</button>
+        </div>
+
     </div>
   );
 }

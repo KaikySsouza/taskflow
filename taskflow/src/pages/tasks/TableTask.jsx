@@ -9,6 +9,7 @@ import EditTask from "./EditTask";
 export default function TableTask({Tasks, ViewClick, DeleteTask}) {
 
     const [detailsClick, setDetailsClick] = useState('')
+    const [editTask, setEditTask] = useState('')
     const [modalAberto, setModalAberto] = useState(null)
     const modal = useModal()
     const tasks = Tasks
@@ -31,6 +32,15 @@ function botao(qual) {
 }
    
 
+
+  function TaskEdit(taskId) {
+    const edit = tasks.find((task) => task.id === taskId)
+
+    setEditTask(edit)
+  }
+
+  
+
   
 
     const savetask = tasks.map((task) => {
@@ -49,7 +59,7 @@ function botao(qual) {
         </button>
 
 
-        <button onClick={() => botao('botao2')} className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">
+        <button onClick={() => {botao('botao2'); TaskEdit(task.id)}} className="bg-cyan-100 p-2 m-2 w-[15vh] rounded-2xl cursor-pointer">
           Editar
         </button>
         <button onClick={() => DeleteTask(task.id)} className="cursor-pointer p-2"> <Trash className="" /> </button>
@@ -75,7 +85,7 @@ function botao(qual) {
        {modalAberto === 'botao2'  && (
         <Modal>
             <div className="absolute inset-0 flex items-center justify-center">
-                <EditTask onClose={() => setModalAberto(null)}  Tasks={Tasks}/>
+                <EditTask onClose={() => setModalAberto(null)}  Tasks={Tasks} editTask={editTask}/>
             </div>
         </Modal>
     )}
