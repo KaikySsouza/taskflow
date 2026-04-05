@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
-import { desc } from "motion/react-client";
+import Default from "../../components/DatePicker";
 export default function EditTask({ Tasks, onClose, editTask}) {
   const [titulo, setTitulo] = useState('')
   const [description, setDescription] = useState('')
-  const [term, setTerm] = useState('')
-
+  const [viewdate, setViewdate] = useState('')
   
-  function Edit(titulo, description, term) {
+
+  console.log(viewdate)
+  function Edit(titulo, description) {
     
     editTask.title = titulo
     editTask.description = description
-    editTask.term = term
+    editTask.term = viewdate
     
   }
 
   
 
-  
+
 
 
 
@@ -30,14 +31,15 @@ export default function EditTask({ Tasks, onClose, editTask}) {
     </div>
         <div className="flex text-[24px] justify-center">
         {`${editTask.id}- ${editTask.title}`}
+        
         </div>
         <div className="flex flex-col m-auto justify-center items-center ">
           <input className="bg-cyan-100 w-[30vh] m-5 p-2 gap-10 rounded-2xl"  placeholder="Título da tarefa:" value={titulo}  onChange={(e) => setTitulo(e.target.value)}/>
-          <input className="bg-cyan-100 l w-[30vh] m-5 p-2 gap-10 rounded-2xl" type="date" value={term} onChange={(e) => setTerm(e.target.value)}  />
+          <Default viewdate={viewdate} setViewdate={setViewdate} /> 
           <textarea className="bg-cyan-100   w-[30vh] m-5 p-2  gap-10 rounded-2xl " placeholder="Descrição:" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-          <button className="bg-cyan-100 w-[30vh] p-2 m-5 rounded-2xl hover:bg-green-500 cursor-pointer " onClick={() => {Edit(titulo, description, term);  onClose()}} >Confirmar</button>
+          <button className="bg-cyan-100 w-[30vh] p-2 m-5 rounded-2xl hover:bg-green-500 cursor-pointer " onClick={() => {Edit(titulo, description );  onClose()}} >Confirmar</button>
         </div>
-
+        
     </div>
   );
 }
