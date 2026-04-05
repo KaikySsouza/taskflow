@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { style } from "motion/react-client";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 
@@ -7,29 +8,47 @@ import "react-datepicker/dist/react-datepicker.css";
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-const Default = ({viewdate, setViewdate}) => {
-   const [selectedDate, setSelectedDate] = useState(new Date());
-
+export const EditTaskDate = ({ setEditViewdate }) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const handleClick = (date) => {
-    setSelectedDate(date)
-    setViewdate(format(date, "dd/MM/yyyy HH:mm"  ))
-  }
+    setSelectedDate(date);
+    setEditViewdate(format(date, "dd/MM/yyyy HH:mm"));
 
+  };
 
-  return( <DatePicker className="bg-cyan-100   w-[30vh] rounded-2xl "
-  showIcon
-    toggleCalendarOnIconClick
-    showTimeSelect
-    dateFormat="dd/MM/yyyy HH:mm" 
-    timeFormat="HH:mm"   
-    timeIntervals={15} 
-    selected={selectedDate}
-    onChange={handleClick}
-    
-  />
-  )
+      return (
+      <DatePicker
+        showIcon
+        toggleCalendarOnIconClick
+        showTimeSelect
+        dateFormat="dd/MM/yyyy HH:mm"
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        selected={selectedDate}
+        onChange={handleClick}
+      />
+    );
 };
 
 
+export const NewTaskDate = ({ setNewtaskViewdate }) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const handleClick = (date) => {
+    setSelectedDate(date);
+    setNewtaskViewdate(format(date, "dd/MM/yyyy HH:mm"));
 
-export default Default;
+
+  };
+      return (
+      <DatePicker
+        showIcon
+        toggleCalendarOnIconClick
+        showTimeSelect
+        dateFormat="dd/MM/yyyy HH:mm"
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        selected={selectedDate}
+        onChange={handleClick}
+      />
+    );
+};

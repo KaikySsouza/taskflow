@@ -1,14 +1,15 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import {NewTaskDate} from "../../components/DatePicker";
 
 
 export default function NewTasks({ ViewTask, CreateTask, onClose}) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [term, setTerm] = useState("");
- 
- 
+  const [newtaskViewDate, setNewtaskViewdate] = useState('')
+  const term = newtaskViewDate
+  console.log(term)
   return (
     <div 
      className={`bg-[#fff] p-[10vh] w-[100%] max-w-[120vh] rounded-2xl } `}
@@ -35,10 +36,9 @@ export default function NewTasks({ ViewTask, CreateTask, onClose}) {
           onChange={(e) => setDescription(e.target.value)}
 
         />
-        <input className="bg-cyan-100 p-2 rounded-2xl" type="datetime-local"
-        value={term}
-        onChange={((e) => setTerm(e.target.value))}
-        />
+        <div className="bg-cyan-100 p-1 rounded-2xl"> <NewTaskDate setNewtaskViewdate={setNewtaskViewdate} /> </div>
+       
+
         <button onClick={() => {CreateTask(title, description, term); onClose()}} className="bg-cyan-100 p-2 w-[25vh]  m-auto rounded-2xl hover:bg-green-500"
         >
           Criar
