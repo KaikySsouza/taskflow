@@ -80,17 +80,18 @@ export default function Tasks() {
   // Possivel adicionar isso dentro do reder.
 
   return (
-    <div className=" bg-gray-300 h-screen">
+    <div className=" bg-gray-300 flex flex-col  min-h-screen">
       <Navbar />
 
       {/* Esconder Tarefa */}
 
       {/* Criar tasks */}
       {/*  parte do modal responsavel por esconder o titulo */}
-      <header className="flex">
+       <div  className="flex flex-col justify-center  m-auto  w-[100%] max-w-[120vh]" >
+      <header className="flex my-8">
         <div
           onClick={modal.open}
-          className="flex m-auto text-[30px]  cursor-pointer mt-10"
+          className=" text-[30px] flex m-auto cursor-pointer "
         >
           Criar tarefa <FilePlusCorner className="m-auto " />
         </div>
@@ -108,15 +109,15 @@ export default function Tasks() {
 
       </header>
 
-      <div 
-        className={`m-auto  bg-[#fff] w-[100%] max-w-[120vh] rounded-2xl mt-10 `}
-      >
-        <div className="flex justify-around gap-[90vh] my-2">
+        <div className="bg-[#fff] rounded-2xl mb-[15vh]">
+     
+        <div className="flex justify-around gap-[90vh] my-2 ">
           <h2 className="text-[25px]">Tarefas</h2>
           <p className="mt-3 hover:underline cursor-pointer">Ver mais</p>
         </div>
         
       <TableTask Tasks={tasks} ViewClick={ViewClick} DeleteTask={DeleteTask}/>
+      </div>
       </div>
     </div>
   );

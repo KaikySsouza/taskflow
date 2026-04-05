@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <>
       <header className="flex  bg-[#599dc7] shadow-xl/15 p-4 justify-baseline space-x-[173vh]">
-        <p className=" text-[18px] font-bold  ">TaskFlow</p>
+        <p className=" text-[18px] font-bold z-1 ">TaskFlow</p>
 
         <div className="flex  gap-25 cursor-pointer ">
           <div>
